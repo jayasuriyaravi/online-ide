@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>INONE IDE</title>
+  <style>
+    * {
+      padding: 0px;
+      background-color: black;
+    }
+
+    .editor-container {
+      display: flex;
+      flex-direction: column;
+      height: 97vh;
+      padding: 5px;
+    }
+
+    .editor-body {
+      flex: 1;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
+
+    .editor-pane {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      padding: 10px;
+      background-color: black;
+      border: 1px solid rgb(175, 70, 244);
+    }
+
+    .editor-textarea {
+      flex: 1;
+      background-color: rgb(52, 52, 52);
+      color: whitesmoke;
+      border: 1px solid rgb(175, 70, 244);
+      outline: none;
+    }
+
+    /*
+    .editor-html {
+      border: 1px solid rgb(175, 70, 244);
+    }
+
+    .editor-css {
+      border: 1px solid rgb(175, 70, 244);
+    }
+
+    .editor-js {
+      border: 1px solid rgb(175, 70, 244);
+    }
+*/
+
+    .editor-header {
+      color: rgb(175, 70, 244);
+      font: 10px;
+    }
+
+    .output-window {
+      height: 48vh;
+      border-top: 1px solid #ccc;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 10px;
+      border: 1px solid rgb(175, 70, 244);
+    }
+
+    .output-frame {
+      width: 100%;
+      height: 100%;
+      background-color: white;
+      border: 2px solid rgb(175, 70, 244);
+      outline: 0;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="editor-container">
+    <div class="editor-body">
+      <div class="editor-pane editor-html">
+        <div class="editor-header">HTML</div><button onclick="write_in_file()">save</button>
+        <textarea class="editor-textarea" id="html-code" onkeyup="run()"></textarea>
+      </div>
+      <div class="editor-pane editor-css">
+        <div class="editor-header">CSS</div>
+        <textarea class="editor-textarea" id="css-code" onkeyup="run()"></textarea>
+      </div>
+      <div class="editor-pane editor-js">
+        <div class="editor-header">JAVASCRIPT</div>
+        <textarea class="editor-textarea" id="js-code" onkeyup="run()"></textarea>
+      </div>
+    </div>
+    <div class="output-window">
+      <div class="editor-header">OUTPUT</div>
+      <iframe class="output-frame" id="output"></iframe>
+    </div>
+    <script>
+      function run() {
+        let htmlcode = document.getElementById("html-code").value;
+        let csscode = document.getElementById("css-code").value;
+        let jscode = document.getElementById("js-code").value;
+        let output = document.getElementById("output");
+        output.contentDocument.body.innerHTML = htmlcode + "<style>" + csscode + "<style>";
+        output.contentWindow.eval(jscode);
+      }
+    </script>
+
+</body>
+
+</html>
