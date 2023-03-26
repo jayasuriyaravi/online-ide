@@ -5,7 +5,11 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>all in one</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Tangerine">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Alkatra&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <style>
     * {
       padding: 0px;
@@ -39,17 +43,33 @@
       flex: 1;
       background-color: rgb(52, 52, 52);
       color: whitesmoke;
-      border: 1px solid rgb(175, 70, 244);
+      border: 2px dotted rgb(175, 70, 244);
       outline: none;
+      border-radius: 2px;
+      transition: all 0.5s;
+      padding: 5px;
+    }
+
+    .editor-textarea:hover {
+      border: solid rgb(219, 165, 255) 2px;
+      margin: -2px;
+      box-shadow: 1px 1px 5px 1px rgb(175, 70, 244);
+    }
+
+    editor-textarea:active {
+      border: solid rgb(219, 165, 255) 2px;
+      margin: -2px;
+      box-shadow: 1px 1px 5px 1px rgb(175, 70, 244);
     }
 
     .editor-header {
       color: rgb(175, 70, 244);
       font: 10px;
+      font-family: 'Alkatra', cursive;
     }
 
     .output-window {
-      height: 48vh;
+      height: 45vh;
       border-top: 1px solid #ccc;
       display: flex;
       flex-direction: column;
@@ -63,14 +83,84 @@
       width: 100%;
       height: 100%;
       background-color: white;
-      border: 2px solid rgb(175, 70, 244);
+      border: 2px dotted rgb(175, 70, 244);
       outline: 0;
+      border-radius: 2px;
     }
+
+    .save-on {
+      background-color: none;
+      color: rgb(175, 70, 244);
+      padding: 5px;
+      border-radius: 4px;
+      border: 1.8px dotted rgb(175, 70, 244);
+      transition: all 0.5s;
+      height: 30px;
+      width: 80px;
+    }
+
+    .save-on:hover {
+      color: rgb(219, 165, 255);
+      background-color: black;
+      border: solid rgb(219, 165, 255) 1px;
+      transform: translateX(-6px);
+      box-shadow: 1px 1px 5px 1px rgb(175, 70, 244);
+    }
+
+    .nav {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      padding: 5px;
+      border: solid rgb(175, 70, 244) 1px;
+      border-bottom: none;
+    }
+
+    .nav_name {
+      display: flex;
+      flex-direction: row;
+      flex: 1;
+      color: rgb(175, 70, 244);
+      padding-left: 10px;
+      font-family: 'Alkatra', cursive;
+      font-size: 25px;
+    }
+
+    button {
+      margin-right: 10px;
+      font-family: 'Alkatra', cursive;
+    }
+
+
+
+
+    /*
+  UL {
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+  }
+
+  ul li {
+  flex: 1;
+  display: inline-block;
+  flex-direction: row;
+  }
+  */
   </style>
 </head>
 
 <body>
   <div class="editor-container">
+    <div class="nav">
+      <div class="nav_name">INONE <i class="fa fa-snowflake-o"
+          style="font-size:24px ;color: rgb(175, 70, 244);padding-bottom: 0%; margin-top: 8px;margin-left: 5px;"></i>
+      </div>
+      <button class="save-on">Save <i class="fa fa-bookmark-o"></i></button>
+      <button class="save-on">
+        Import <i class="fa fa-download"></i></button>
+    </div>
     <div class="editor-body">
       <div class="editor-pane editor-html">
         <div class="editor-header">HTML</div>
@@ -81,7 +171,7 @@
         <textarea class="editor-textarea" id="css-code" onkeyup="run()"></textarea>
       </div>
       <div class="editor-pane editor-js">
-        <div class="editor-header">JAVASCRIPT</div>
+        <div class="editor-header">JS</div>
         <textarea class="editor-textarea" id="js-code" onkeyup="run()"></textarea>
       </div>
     </div>
@@ -90,18 +180,39 @@
       <iframe class="output-frame" id="output"></iframe>
     </div>
     <script>
-
       function run() {
         let htmlcode = document.getElementById("html-code").value;
         let csscode = document.getElementById("css-code").value;
         let jscode = document.getElementById("js-code").value;
         let output = document.getElementById("output");
-
         output.contentDocument.body.innerHTML = htmlcode + "<style>" + csscode + "<style>";
-
         output.contentWindow.eval(jscode);
       }
+      function saveTextAsFile() {
+        var ids = ["html-code", "css-code", "js-code"];
+        var elements = [];
+        for (var i = 0; i < ids.length; i++) {
+          var textToWrite = document.getElementById(ids[i]).value;
+          var textFileAsBlob = new Blob([textToWrite], { type: "text/plain" });
+          var fileNameToSaveAs = "myNewFile.txt";
 
+          var downloadLink = document.createElement("a");
+          downloadLink.download = fileNameToSaveAs;
+          downloadLink.innerHTML = "Download File";
+          if (window.webkitURL != null) {
+            // Chrome allows the link to be clicked without actually adding it to the DOM.
+            downloadLink.href = window.webkitURL.createObjectURL(textFileAsBlob);
+          } else {
+            // Firefox requires the link to be added to the DOM before it can be clicked.
+            downloadLink.href = window.URL.createObjectURL(textFileAsBlob);
+            downloadLink.onclick = destroyClickedElement;
+            downloadLink.style.display = "none";
+            document.body.appendChild(downloadLink);
+          }
+
+          downloadLink.click();
+        }
+      }
     </script>
 
 </body>
