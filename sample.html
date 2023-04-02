@@ -41,31 +41,35 @@
 
     .editor-textarea {
       flex: 1;
-      background-color: rgb(52, 52, 52);
+      background-color: rgb(39, 38, 38);
       color: whitesmoke;
       border: 2px dotted rgb(175, 70, 244);
       outline: none;
       border-radius: 2px;
       transition: all 0.5s;
       padding: 5px;
+      margin-top: 2px;
     }
 
     .editor-textarea:hover {
       border: solid rgb(219, 165, 255) 2px;
-      margin: -2px;
+      margin: -1px;
       box-shadow: 1px 1px 5px 1px rgb(175, 70, 244);
     }
 
-    editor-textarea:active {
+    .editor-textarea:active {
       border: solid rgb(219, 165, 255) 2px;
-      margin: -2px;
+      margin: -1px;
       box-shadow: 1px 1px 5px 1px rgb(175, 70, 244);
     }
 
     .editor-header {
+      display: flex;
+      flex-direction: row;
       color: rgb(175, 70, 244);
       font: 10px;
       font-family: 'Alkatra', cursive;
+
     }
 
     .output-window {
@@ -89,7 +93,7 @@
     }
 
     .save-on {
-      background-color: none;
+      background-color: rgb(39, 38, 38);
       color: rgb(175, 70, 244);
       padding: 5px;
       border-radius: 4px;
@@ -101,7 +105,6 @@
 
     .save-on:hover {
       color: rgb(219, 165, 255);
-      background-color: black;
       border: solid rgb(219, 165, 255) 1px;
       transform: translateX(-6px);
       box-shadow: 1px 1px 5px 1px rgb(175, 70, 244);
@@ -130,8 +133,30 @@
     button {
       margin-right: 10px;
       font-family: 'Alkatra', cursive;
+      padding-top: 1px;
     }
 
+    .box {
+      background-color: rgb(39, 38, 38);
+      color: rgb(175, 70, 244);
+      padding: 5px;
+      padding-top: 1px;
+      border-radius: 4px;
+      border: 1.5px dotted rgb(175, 70, 244);
+      transition: all 0.5s;
+      height: 25px;
+      width: 25px;
+    }
+
+    .box:hover {
+      border: solid rgb(219, 165, 255) 1px;
+      box-shadow: 1px 1px 2px 0px rgb(175, 70, 244);
+      transform: translateX(-2px);
+    }
+
+    .name {
+      flex: 1;
+    }
 
 
 
@@ -154,24 +179,48 @@
 <body>
   <div class="editor-container">
     <div class="nav">
-      <div class="nav_name">INONE <i class="fa fa-snowflake-o"
+      <div class="nav_name">INONE <i class="fa fa-connectdevelop"
           style="font-size:24px ;color: rgb(175, 70, 244);padding-bottom: 0%; margin-top: 8px;margin-left: 5px;"></i>
       </div>
-      <button class="save-on">Save <i class="fa fa-bookmark-o"></i></button>
-      <button class="save-on">
-        Import <i class="fa fa-download"></i></button>
+      <button class="save-on" onclick="saveTextAsFile()">Save
+        <i class="fa fa-bookmark-o" style="background-color:rgb(39, 38, 38)" ;></i>
+      </button>
     </div>
     <div class="editor-body">
       <div class="editor-pane editor-html">
-        <div class="editor-header">HTML</div>
+        <div class="editor-header">
+          <div class="name">HTML</div>
+          <button class="box" id="myButton" onclick="copyToClipboard1()">
+            <i class="fa fa-clone" style="background-color:rgb(39, 38, 38) ;"></i>
+          </button>
+          <button class="box" onclick="clearTextArea1()">
+            <i class="fa fa-refresh" style="background-color:rgb(39, 38, 38) ;"></i>
+          </button>
+        </div>
         <textarea class="editor-textarea" id="html-code" onkeyup="run()"></textarea>
       </div>
       <div class="editor-pane editor-css">
-        <div class="editor-header">CSS</div>
+        <div class="editor-header">
+          <div class="name">CSS</div>
+          <button class="box" id="myButton" onclick="copyToClipboard2()"">
+            <i class=" fa fa-clone" style="background-color:rgb(39, 38, 38) ;"></i>
+          </button>
+          <button class="box" onclick="clearTextArea2()">
+            <i class="fa fa-refresh" style="background-color:rgb(39, 38, 38); "></i>
+          </button>
+        </div>
         <textarea class="editor-textarea" id="css-code" onkeyup="run()"></textarea>
       </div>
       <div class="editor-pane editor-js">
-        <div class="editor-header">JS</div>
+        <div class="editor-header">
+          <div class="name">JS</div>
+          <button class="box" id="myButton" onclick="copyToClipboard3()">
+            <i class=" fa fa-clone" style="background-color:rgb(39, 38, 38) ;"></i>
+          </button>
+          <button class="box" onclick="clearTextArea3()">
+            <i class="fa fa-refresh" style="background-color:rgb(39, 38, 38) ;"></i>
+          </button>
+        </div>
         <textarea class="editor-textarea" id="js-code" onkeyup="run()"></textarea>
       </div>
     </div>
@@ -200,10 +249,8 @@
           downloadLink.download = fileNameToSaveAs;
           downloadLink.innerHTML = "Download File";
           if (window.webkitURL != null) {
-            // Chrome allows the link to be clicked without actually adding it to the DOM.
             downloadLink.href = window.webkitURL.createObjectURL(textFileAsBlob);
           } else {
-            // Firefox requires the link to be added to the DOM before it can be clicked.
             downloadLink.href = window.URL.createObjectURL(textFileAsBlob);
             downloadLink.onclick = destroyClickedElement;
             downloadLink.style.display = "none";
@@ -212,6 +259,31 @@
 
           downloadLink.click();
         }
+      }
+
+      function copyToClipboard1() {
+        var copyText = document.getElementById("html-code");
+        copyText.select();
+        document.execCommand("copy");
+      }
+      function copyToClipboard2() {
+        var copyText = document.getElementById("css-code");
+        copyText.select();
+        document.execCommand("copy");
+      }
+      function copyToClipboard3() {
+        var copyText = document.getElementById("js-code");
+        copyText.select();
+        document.execCommand("copy");
+      }
+      function clearTextArea1() {
+        document.getElementById("html-code").value = "";
+      }
+      function clearTextArea2() {
+        document.getElementById("css-code").value = "";
+      }
+      function clearTextArea3() {
+        document.getElementById("js-code").value = "";
       }
     </script>
 
