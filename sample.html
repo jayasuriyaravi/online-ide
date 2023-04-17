@@ -36,14 +36,14 @@
       flex-direction: column;
       padding: 10px;
       background-color: black;
-      border: 1px solid rgb(175, 70, 244);
+      border: solid 0.1px rgb(0, 215, 255);
     }
 
     .editor-textarea {
       flex: 1;
       background-color: rgb(39, 38, 38);
       color: whitesmoke;
-      border: 2px dotted rgb(175, 70, 244);
+      border: 2px dotted rgb(0, 215, 255);
       outline: none;
       border-radius: 2px;
       transition: all 0.5s;
@@ -52,21 +52,21 @@
     }
 
     .editor-textarea:hover {
-      border: solid rgb(219, 165, 255) 2px;
+      border: solid rgb(0, 215, 255) 2px;
       margin: -1px;
-      box-shadow: 1px 1px 5px 1px rgb(175, 70, 244);
+      box-shadow: 1px 1px 5px 1px rgb(0, 215, 255);
     }
 
     .editor-textarea:active {
-      border: solid rgb(219, 165, 255) 2px;
+      border: solid rgb(0, 215, 255) 2px;
       margin: -1px;
-      box-shadow: 1px 1px 5px 1px rgb(175, 70, 244);
+      box-shadow: 1px 1px 5px 1px rgb(0, 215, 255);
     }
 
     .editor-header {
       display: flex;
       flex-direction: row;
-      color: rgb(175, 70, 244);
+      color: rgb(0, 215, 255);
       font: 10px;
       font-family: 'Alkatra', cursive;
 
@@ -80,34 +80,34 @@
       justify-content: center;
       align-items: center;
       padding: 10px;
-      border: 1px solid rgb(175, 70, 244);
+      border: 1px solid rgb(0, 215, 255);
     }
 
     .output-frame {
       width: 100%;
       height: 100%;
       background-color: white;
-      border: 2px dotted rgb(175, 70, 244);
+      border: 2px dotted rgb(0, 215, 255);
       outline: 0;
       border-radius: 2px;
     }
 
     .save-on {
       background-color: rgb(39, 38, 38);
-      color: rgb(175, 70, 244);
+      color: rgb(0, 215, 255);
       padding: 5px;
       border-radius: 4px;
-      border: 1.8px dotted rgb(175, 70, 244);
+      border: 1.8px dotted rgb(0, 215, 255);
       transition: all 0.5s;
       height: 30px;
       width: 80px;
     }
 
     .save-on:hover {
-      color: rgb(219, 165, 255);
-      border: solid rgb(219, 165, 255) 1px;
+      color: rgb(0, 215, 255);
+      border: solid rgb(0, 215, 255) 1px;
       transform: translateX(-6px);
-      box-shadow: 1px 1px 5px 1px rgb(175, 70, 244);
+      box-shadow: 1px 1px 5px 1px rgb(0, 215, 255);
     }
 
     .nav {
@@ -116,7 +116,7 @@
       justify-content: center;
       align-items: center;
       padding: 5px;
-      border: solid rgb(175, 70, 244) 1px;
+      border: solid rgb(0, 215, 255) 1px;
       border-bottom: none;
     }
 
@@ -124,10 +124,12 @@
       display: flex;
       flex-direction: row;
       flex: 1;
-      color: rgb(175, 70, 244);
+      color: rgb(0, 215, 255);
       padding-left: 10px;
       font-family: 'Alkatra', cursive;
-      font-size: 25px;
+      font-size: 20px;
+      letter-spacing: 2px;
+
     }
 
     button {
@@ -138,19 +140,19 @@
 
     .box {
       background-color: rgb(39, 38, 38);
-      color: rgb(175, 70, 244);
+      color: rgb(0, 215, 255);
       padding: 5px;
       padding-top: 1px;
       border-radius: 4px;
-      border: 1.5px dotted rgb(175, 70, 244);
+      border: 1.5px dotted rgb(0, 215, 255);
       transition: all 0.5s;
       height: 25px;
       width: 25px;
     }
 
     .box:hover {
-      border: solid rgb(219, 165, 255) 1px;
-      box-shadow: 1px 1px 2px 0px rgb(175, 70, 244);
+      border: solid rgb(0, 170, 255) 1px;
+      box-shadow: 1px 1px 2px 0px rgb(0, 136, 255);
       transform: translateX(-2px);
     }
 
@@ -158,7 +160,11 @@
       flex: 1;
     }
 
+    .nav a {
+      text-decoration: none;
+      color: rgb(0, 215, 255);
 
+    }
 
     /*
   UL {
@@ -180,51 +186,54 @@
   <form method="post" action="download.php">
     <div class="editor-container">
       <div class="nav">
-        <div class="nav_name">INONE <i class="fa fa-connectdevelop"
-            style="font-size:24px ;color:rgb(15, 193, 54);padding-bottom: 0%; margin-top: 8px;margin-left: 5px;"></i>
-        </div>
-        <button class="save-on" name="download">Save
-          <i class="fa fa-bookmark-o" style="background-color:rgb(39, 38, 38);color:rgb(255, 255, 255) ;" ;></i>
-        </button>
+        <a href="index.html">
+          <div class="nav_name"> <i class="fa fa-connectdevelop"
+              style="font-size:34px ;color:rgb(15, 193, 54);padding-bottom: 0%; margin-top: 8px;margin-left: 5px;"></i>
+            CODEPLAY
+        </a>
       </div>
-      <div class="editor-body">
-        <div class="editor-pane editor-html">
-          <div class="editor-header">
-            <div class="name">HTML <i class="fa fa-html5" style="color:rgb(255, 137, 82) ;"></i></div>
-            <button class="box" id="myButton" onclick="copyToClipboard1()">
-              <i class="fa fa-clone" style="background-color:rgb(39, 38, 38) ;"></i>
-            </button>
-            <button class="box" onclick="clearTextArea1()">
-              <i class="fa fa-refresh" style="background-color:rgb(39, 38, 38) ;"></i>
-            </button>
-          </div>
-          <textarea class="editor-textarea" name="textarea1" id="html-code" onkeyup="run()"></textarea>
+      <button class="save-on" name="download">Save
+        <i class="fa fa-bookmark-o" style="background-color:rgb(39, 38, 38);color:rgb(255, 255, 255) ;" ;></i>
+      </button>
+    </div>
+    <div class="editor-body">
+      <div class="editor-pane editor-html">
+        <div class="editor-header">
+          <div class="name">HTML <i class="fa fa-html5" style="color:rgb(255, 137, 82) ;"></i></div>
+          <button class="box" id="myButton" onclick="copyToClipboard1()">
+            <i class="fa fa-clone" style="background-color:rgb(39, 38, 38) ;"></i>
+          </button>
+          <button class="box" onclick="clearTextArea1()">
+            <i class="fa fa-refresh" style="background-color:rgb(39, 38, 38) ;"></i>
+          </button>
         </div>
-        <div class="editor-pane editor-css">
-          <div class="editor-header">
-            <div class="name">CSS <i class="fa fa-css3" style="color:rgb(91, 165, 255) ;"></i></div>
-            <button class="box" id="myButton" onclick="copyToClipboard2()"">
+        <textarea class="editor-textarea" name="textarea1" id="html-code" onkeyup="run()"></textarea>
+      </div>
+      <div class="editor-pane editor-css">
+        <div class="editor-header">
+          <div class="name">CSS <i class="fa fa-css3" style="color:rgb(91, 165, 255) ;"></i></div>
+          <button class="box" id="myButton" onclick="copyToClipboard2()"">
             <i class=" fa fa-clone" style="background-color:rgb(39, 38, 38) ;"></i>
-            </button>
-            <button class="box" onclick="clearTextArea2()">
-              <i class="fa fa-refresh" style="background-color:rgb(39, 38, 38); "></i>
-            </button>
-          </div>
-          <textarea class="editor-textarea" name="textarea2" id="css-code" onkeyup="run()"></textarea>
+          </button>
+          <button class="box" onclick="clearTextArea2()">
+            <i class="fa fa-refresh" style="background-color:rgb(39, 38, 38); "></i>
+          </button>
         </div>
-        <div class="editor-pane editor-js">
-          <div class="editor-header">
-            <div class="name">JS <i class="fa fa-joomla" style="color:rgb(197, 184, 7) ;font-weight: 0.5px;"></i></div>
-            <button class=" box" id="myButton" onclick="copyToClipboard3()">
-              <i class=" fa fa-clone" style="background-color:rgb(39, 38, 38) ;"></i>
-            </button>
-            <button class="box" onclick="clearTextArea3()">
-              <i class="fa fa-refresh" style="background-color:rgb(39, 38, 38) ;"></i>
-            </button>
-          </div>
-          <textarea class="editor-textarea" name="textarea3" id="js-code" onkeyup="run()"></textarea>
-        </div>
+        <textarea class="editor-textarea" name="textarea2" id="css-code" onkeyup="run()"></textarea>
       </div>
+      <div class="editor-pane editor-js">
+        <div class="editor-header">
+          <div class="name">JS <i class="fa fa-joomla" style="color:rgb(197, 184, 7) ;font-weight: 0.5px;"></i></div>
+          <button class=" box" id="myButton" onclick="copyToClipboard3()">
+            <i class=" fa fa-clone" style="background-color:rgb(39, 38, 38) ;"></i>
+          </button>
+          <button class="box" onclick="clearTextArea3()">
+            <i class="fa fa-refresh" style="background-color:rgb(39, 38, 38) ;"></i>
+          </button>
+        </div>
+        <textarea class="editor-textarea" name="textarea3" id="js-code" onkeyup="run()"></textarea>
+      </div>
+    </div>
   </form>
   <div class="output-window">
     <div class="editor-header">OUTPUT</div>

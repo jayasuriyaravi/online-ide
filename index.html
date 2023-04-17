@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CODEPLAY</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+<body>
+    <div class="header" id="home">
+        <div class="container">
+            <div class="navbar">
+                <div class="logo">
+                    <i class="fa fa-connectdevelop"
+                        style="font-size:44px ;color:rgb(15, 193, 54);padding-bottom: 0%; margin-top: 8px;margin-left: 5px;"></i>
+                    <span class="name">CODEPLAY</span>
+                </div>
+                <nav id="mylinks">
+                    <ul id="MenuItems">
+                        <li><a href="#home">Home</a> </li>
+                        <li><a href="#about">About</a> </li>
+                        <li><a href="#Contact">Contact</a> </li>
+                        <li><a href="">Account</a> </li>
+                    </ul>
+                </nav>
+                <div class="menu-icon" onclick="menutoggle()">
+                    <i class="fa fa-bars"></i>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-1">
+                    <h2 class="">Play Your Code<br>With A New Style!</h2>
+                    <p class="text">success isn't always about greatness,its about consistency.. <br>consistent hard
+                        work
+                        leads to success and greatness will come.</p>
+                    <p class="text">Being consistent is all about being committed to your actions, and it is the
+                        quickest way to climb the ladder of
+                        success.</p>
+                    </br>
+                    </br>
+                    <button class="btn"><a href="sample.html">Start Play..!</a></button>
+                </div>
+                <div class="col-1">
+                    <img class="code" src="image/cl1.jpg">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="About-section">
+        <div class="container">
+            <div class="row" id="about">
+                <div class="col-1 img">
+                    <img class="code" src="image/col.jpg">
+                </div>
+                <div class="col-1 content">
+
+                    <h1 class="">AboutUs!</h1>
+                    <p class="text2"><span class="title">Codeplay</span> Online Code Editer are a great way to edit
+                        HTML, CSS, and JavaScript code without
+                        having to install any software on
+                        your computer. They are especially useful for beginners who are just starting to learn how
+                        to
+                        code.</p>
+                    <p class="text2"><span class="title">Codeplay</span> Online Code Editor is a free online tool
+                        that
+                        allows you to edit HTML,
+                        CSS, and JavaScript code with ease. It
+                        has a simple and intuitive interface that makes it easy to use even for beginners. You can
+                        use
+                        it to create and test
+                        your own web pages or to experiment with different coding techniques. The editor also has a
+                        number of features that make
+                        it useful for more advanced users</p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer" id="Contact">
+        <div class="col-3 flogo">
+            <i class="fa fa-connectdevelop"
+                style="font-size:44px ;color:rgb(15, 193, 54);padding-bottom: 0%; margin-top: 8px;margin-left: 5px;"></i>
+            <span class="name">CODEPLAY</span>
+        </div>
+        <div class="col-3 use">
+            <h2>USEFUL LINKS</h2>
+            <ul>
+                <li><a href="#home">Home</a> </li>
+                <li><a href="#about">About</a> </li>
+                <li><a href="#Contact">Contact</a> </li>
+                <li><a href="#">Account</a> </li>
+            </ul>
+        </div>
+        <div class="col-3 con">
+            <h2>Contact Us</h2>
+            <p>
+                Playcode,<br>
+                123 Main St,<br>
+                Anytown, USA 12345,<br>
+                Phone: (123) 456-7890<br>
+                Email: codeplay@info.com
+            </p><br>
+            <ul>
+                <li><a href="#"><i class="fa fa-instagram"></i></a> </li>
+                <li><a href="#"><i class="fa fa-whatsapp"></i></a> </li>
+                <li><a href="#"><i class="fa fa-twitter"></i></a> </li>
+                <li><a href="#"><i class="fa fa-facebook"></i></a> </li>
+            </ul>
+        </div>
+    </div>
+    <script>
+        /* Toggle between showing and hiding the navigation menu links when the user clicks on the hamburger menu / bar icon */
+        var MenuItems = document.getElementById("MenuItems");
+
+        MenuItems.style.maxHeight = "0px";
+
+        function menutoggle() {
+            if (MenuItems.style.maxHeight == "0px") {
+                MenuItems.style.maxHeight = "200px";
+            }
+            else {
+                MenuItems.style.maxHeight = "0px";
+            }
+        }
+    </script>
+</body>
+</html>
