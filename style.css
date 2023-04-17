@@ -378,3 +378,10 @@ nav a {
         font-size: 35px;
     }
 }
+
+@media only screen and (max-width:400px) {
+    nav ul {
+        position: absolute;
+        top: 120px;
+    }
+}
