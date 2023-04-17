@@ -332,13 +332,12 @@ nav a {
 
     nav ul {
         position: absolute;
-        top: 90px;
+        top: 100px;
         right: 0;
         background: #333;
         width: 100%;
         overflow: hidden;
         transition: max-height 0.5s;
-
     }
 
     nav ul li {
@@ -378,5 +377,4 @@ nav a {
     .row h2 {
         font-size: 35px;
     }
-
 }
