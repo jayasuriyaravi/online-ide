@@ -1,0 +1,154 @@
+ * {
+     padding: 0px;
+     background-color: black;
+ }
+
+ .editor-container {
+     display: flex;
+     flex-direction: column;
+     height: 97vh;
+     padding: 5px;
+ }
+
+ .editor-body {
+     flex: 1;
+     display: flex;
+     flex-direction: row;
+     flex-wrap: wrap;
+ }
+
+ .editor-pane {
+     flex: 1;
+     display: flex;
+     flex-direction: column;
+     padding: 10px;
+     background-color: black;
+     border: solid 0.1px rgb(0, 215, 255);
+ }
+
+ .editor-textarea {
+     flex: 1;
+     background-color: rgb(39, 38, 38);
+     color: whitesmoke;
+     border: 2px dotted rgb(0, 215, 255);
+     outline: none;
+     border-radius: 2px;
+     transition: all 0.5s;
+     padding: 5px;
+     margin-top: 2px;
+ }
+
+ .editor-textarea:hover {
+     border: solid rgb(0, 215, 255) 2px;
+     margin: -1px;
+     box-shadow: 1px 1px 5px 1px rgb(0, 215, 255);
+ }
+
+ .editor-textarea:active {
+     border: solid rgb(0, 215, 255) 2px;
+     margin: -1px;
+     box-shadow: 1px 1px 5px 1px rgb(0, 215, 255);
+ }
+
+ .editor-header {
+     display: flex;
+     flex-direction: row;
+     color: rgb(0, 215, 255);
+     font: 10px;
+     font-family: 'Alkatra', cursive;
+
+ }
+
+ .output-window {
+     height: 45vh;
+     border-top: 1px solid #ccc;
+     display: flex;
+     flex-direction: column;
+     justify-content: center;
+     align-items: center;
+     padding: 10px;
+     border: 1px solid rgb(0, 215, 255);
+ }
+
+ .output-frame {
+     width: 100%;
+     height: 100%;
+     background-color: white;
+     border: 2px dotted rgb(0, 215, 255);
+     outline: 0;
+     border-radius: 2px;
+ }
+
+ .save-on {
+     background-color: rgb(39, 38, 38);
+     color: rgb(0, 215, 255);
+     padding: 5px;
+     border-radius: 4px;
+     border: 1.8px dotted rgb(0, 215, 255);
+     transition: all 0.5s;
+     height: 30px;
+     width: 80px;
+ }
+
+ .save-on:hover {
+     color: rgb(0, 215, 255);
+     border: solid rgb(0, 215, 255) 1px;
+     transform: translateX(-6px);
+     box-shadow: 1px 1px 5px 1px rgb(0, 215, 255);
+ }
+
+ .nav {
+     display: flex;
+     flex-direction: row;
+     justify-content: center;
+     align-items: center;
+     padding: 5px;
+     border: solid rgb(0, 215, 255) 1px;
+     border-bottom: none;
+ }
+
+ .nav_name {
+     display: flex;
+     flex-direction: row;
+     flex: 1;
+     color: rgb(0, 215, 255);
+     padding-left: 10px;
+     font-family: 'Alkatra', cursive;
+     font-size: 20px;
+     letter-spacing: 2px;
+
+ }
+
+ button {
+     margin-right: 10px;
+     font-family: 'Alkatra', cursive;
+     padding-top: 1px;
+ }
+
+ .box {
+     background-color: rgb(39, 38, 38);
+     color: rgb(0, 215, 255);
+     padding: 5px;
+     padding-top: 1px;
+     border-radius: 4px;
+     border: 1.5px dotted rgb(0, 215, 255);
+     transition: all 0.5s;
+     height: 25px;
+     width: 25px;
+ }
+
+ .box:hover {
+     border: solid rgb(0, 170, 255) 1px;
+     box-shadow: 1px 1px 2px 0px rgb(0, 136, 255);
+     transform: translateX(-2px);
+ }
+
+ .name {
+     flex: 1;
+ }
+
+ .nav a {
+     text-decoration: none;
+     color: rgb(0, 215, 255);
+
+ }
