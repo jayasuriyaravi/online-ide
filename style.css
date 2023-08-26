@@ -4,6 +4,10 @@
     font-family: 'Courier New', monospace;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 .container {
     margin-left: 50px;
     margin-right: 50px;

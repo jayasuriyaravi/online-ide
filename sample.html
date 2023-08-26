@@ -195,107 +195,53 @@
       <button class="save-on" name="download">Save
         <i class="fa fa-bookmark-o" style="background-color:rgb(39, 38, 38);color:rgb(255, 255, 255) ;" ;></i>
       </button>
-    </div>
-    <div class="editor-body">
-      <div class="editor-pane editor-html">
-        <div class="editor-header">
-          <div class="name">HTML <i class="fa fa-html5" style="color:rgb(255, 137, 82) ;"></i></div>
-          <button class="box" id="myButton" onclick="copyToClipboard1()">
-            <i class="fa fa-clone" style="background-color:rgb(39, 38, 38) ;"></i>
-          </button>
-          <button class="box" onclick="clearTextArea1()">
-            <i class="fa fa-refresh" style="background-color:rgb(39, 38, 38) ;"></i>
-          </button>
-        </div>
-        <textarea class="editor-textarea" name="textarea1" id="html-code" onkeyup="run()"></textarea>
-      </div>
-      <div class="editor-pane editor-css">
-        <div class="editor-header">
-          <div class="name">CSS <i class="fa fa-css3" style="color:rgb(91, 165, 255) ;"></i></div>
-          <button class="box" id="myButton" onclick="copyToClipboard2()"">
-            <i class=" fa fa-clone" style="background-color:rgb(39, 38, 38) ;"></i>
-          </button>
-          <button class="box" onclick="clearTextArea2()">
-            <i class="fa fa-refresh" style="background-color:rgb(39, 38, 38); "></i>
-          </button>
-        </div>
-        <textarea class="editor-textarea" name="textarea2" id="css-code" onkeyup="run()"></textarea>
-      </div>
-      <div class="editor-pane editor-js">
-        <div class="editor-header">
-          <div class="name">JS <i class="fa fa-joomla" style="color:rgb(197, 184, 7) ;font-weight: 0.5px;"></i></div>
-          <button class=" box" id="myButton" onclick="copyToClipboard3()">
-            <i class=" fa fa-clone" style="background-color:rgb(39, 38, 38) ;"></i>
-          </button>
-          <button class="box" onclick="clearTextArea3()">
-            <i class="fa fa-refresh" style="background-color:rgb(39, 38, 38) ;"></i>
-          </button>
-        </div>
-        <textarea class="editor-textarea" name="textarea3" id="js-code" onkeyup="run()"></textarea>
-      </div>
-    </div>
   </form>
+  </div>
+  <div class="editor-body">
+    <div class="editor-pane editor-html">
+      <div class="editor-header">
+        <div class="name">HTML <i class="fa fa-html5" style="color:rgb(255, 137, 82) ;"></i></div>
+        <button class="box" id="myButton" onclick="copyToClipboard1()">
+          <i class="fa fa-clone" style="background-color:rgb(39, 38, 38) ;"></i>
+        </button>
+        <button class="box" onclick="clearTextArea1()">
+          <i class="fa fa-refresh" style="background-color:rgb(39, 38, 38) ;"></i>
+        </button>
+      </div>
+      <textarea class="editor-textarea" name="textarea1" id="html-code" onkeyup="run()"></textarea>
+    </div>
+    <div class="editor-pane editor-css">
+      <div class="editor-header">
+        <div class="name">CSS <i class="fa fa-css3" style="color:rgb(91, 165, 255) ;"></i></div>
+        <button class="box" id="myButton" onclick="copyToClipboard2()"">
+            <i class=" fa fa-clone" style="background-color:rgb(39, 38, 38) ;"></i>
+        </button>
+        <button class="box" onclick="clearTextArea2()">
+          <i class="fa fa-refresh" style="background-color:rgb(39, 38, 38); "></i>
+        </button>
+      </div>
+      <textarea class="editor-textarea" name="textarea2" id="css-code" onkeyup="run()"></textarea>
+    </div>
+    <div class="editor-pane editor-js">
+      <div class="editor-header">
+        <div class="name">JS <i class="fa fa-joomla" style="color:rgb(197, 184, 7) ;font-weight: 0.5px;"></i></div>
+        <button class=" box" id="myButton" onclick="copyToClipboard3()">
+          <i class=" fa fa-clone" style="background-color:rgb(39, 38, 38) ;"></i>
+        </button>
+        <button class="box" onclick="clearTextArea3()">
+          <i class="fa fa-refresh" style="background-color:rgb(39, 38, 38) ;"></i>
+        </button>
+      </div>
+      <textarea class="editor-textarea" name="textarea3" id="js-code" onkeyup="run()"></textarea>
+    </div>
+  </div>
+  <!-- </form> -->
   <div class="output-window">
     <div class="editor-header">OUTPUT</div>
     <iframe class="output-frame" id="output"></iframe>
   </div>
-  <script>
-    function run() {
-      let htmlcode = document.getElementById("html-code").value;
-      let csscode = document.getElementById("css-code").value;
-      let jscode = document.getElementById("js-code").value;
-      let output = document.getElementById("output");
-      output.contentDocument.body.innerHTML = htmlcode + "<style>" + csscode + "<style>";
-      output.contentWindow.eval(jscode);
-    }
-    function saveTextAsFile() {
-      var ids = ["html-code", "css-code", "js-code"];
-      var elements = [];
-      for (var i = 0; i < ids.length; i++) {
-        var textToWrite = document.getElementById(ids[i]).value;
-        var textFileAsBlob = new Blob([textToWrite], { type: "text/plain" });
-        var fileNameToSaveAs = "myNewFile.txt";
+  <script src="ide.js">
 
-        var downloadLink = document.createElement("a");
-        downloadLink.download = fileNameToSaveAs;
-        downloadLink.innerHTML = "Download File";
-        if (window.webkitURL != null) {
-          downloadLink.href = window.webkitURL.createObjectURL(textFileAsBlob);
-        } else {
-          downloadLink.href = window.URL.createObjectURL(textFileAsBlob);
-          downloadLink.onclick = destroyClickedElement;
-          downloadLink.style.display = "none";
-          document.body.appendChild(downloadLink);
-        }
-
-        downloadLink.click();
-      }
-    }
-
-    function copyToClipboard1() {
-      var copyText = document.getElementById("html-code");
-      copyText.select();
-      document.execCommand("copy");
-    }
-    function copyToClipboard2() {
-      var copyText = document.getElementById("css-code");
-      copyText.select();
-      document.execCommand("copy");
-    }
-    function copyToClipboard3() {
-      var copyText = document.getElementById("js-code");
-      copyText.select();
-      document.execCommand("copy");
-    }
-    function clearTextArea1() {
-      document.getElementById("html-code").value = "";
-    }
-    function clearTextArea2() {
-      document.getElementById("css-code").value = "";
-    }
-    function clearTextArea3() {
-      document.getElementById("js-code").value = "";
-    }
   </script>
 
 </body>
