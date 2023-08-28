@@ -54,3 +54,4 @@ function clearTextArea2() {
 function clearTextArea3() {
     document.getElementById("js-code").value = "";
 }
+// /dxrfcgvhbjnkml,;./
